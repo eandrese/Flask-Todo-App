@@ -11,3 +11,5 @@ steps:
       - 'us-central1-docker.pkg.dev/$PROJECT_ID/repositorio-docker/flask-todo-app:$SHORT_SHA'
 images:
   - 'us-central1-docker.pkg.dev/$PROJECT_ID/repositorio-docker/flask-todo-app:$SHORT_SHA'
+options:
+  logging: CLOUD_LOGGING_ONLY
