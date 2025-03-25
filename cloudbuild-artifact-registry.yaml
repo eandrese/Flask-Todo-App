@@ -1,0 +1,18 @@
+steps:
+  # Paso 1: Construir la imagen Docker
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - build
+      - '-t'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/repositorio-docker/flask-todo-app:$SHORT_SHA'
+      - '.'
+  # Paso 2: Subir (push) la imagen a Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - push
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/repositorio-docker/flask-todo-app:$SHORT_SHA'
+images:
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/repositorio-docker/flask-todo-app:$SHORT_SHA'
+options:
+  logging: CLOUD_LOGGING_ONLY
+
