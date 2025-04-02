@@ -11,17 +11,6 @@ steps:
     args:
       - push
       - 'us-central1-docker.pkg.dev/$PROJECT_ID/repositorio-docker/flask-todo-app:$SHORT_SHA'
-  # Paso 3: Desplegar la nueva imagen en Cloud Run
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args:
-      - run
-      - deploy
-      - flask-todo-app   # Nombre del servicio en Cloud Run
-      - --image
-      - us-central1-docker.pkg.dev/$PROJECT_ID/repositorio-docker/flask-todo-app:$SHORT_SHA
-      - --region=us-central1         # Ajusta la región a la de tu servicio
-      - --allow-unauthenticated      # Permite invocaciones sin autenticación
-      - --platform=managed
 images:
   - 'us-central1-docker.pkg.dev/$PROJECT_ID/repositorio-docker/flask-todo-app:$SHORT_SHA'
 options:
